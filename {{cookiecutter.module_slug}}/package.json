@@ -1,0 +1,8 @@
+{
+  "name": "{{cookiecutter.module_slug}}",
+  "version": "1.0.0",
+  "description": "{{cookiecutter.module_description}}",
+  "main": "{{cookiecutter.module_slug}}.js",
+  "author": "{{cookiecutter.author_name}} <{{cookiecutter.author_email}}>",
+  "license": "{{cookiecutter.module_license}}"
+}

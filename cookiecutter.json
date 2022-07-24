@@ -1,0 +1,8 @@
+{
+    "module_name": "MMM Sample Module",
+    "module_slug": "{{ cookiecutter.module_name.upper().replace(' ',  '_').replace('_', '-') }}",
+    "module_license": ["mit", "apache-2.0", "gpl-3.0", "bsd-3-clause", "unlicense"],
+    "module_description": "A sample MagicMirror module.",
+    "author_name": "First Last",
+    "author_email": "first.last@gmail.com"
+}
