@@ -13,9 +13,10 @@ Module.register("{{cookiecutter.module_slug}}", {
         updateInterval: 60, // minutes
         size: 3,
     },
-
-    requiresVersion: "2.1.0", // Required version of MagicMirror
-
+    // Required version of MagicMirror
+    requiresVersion: "2.1.0",
+    // Module properties
+    items: [],
     // Define translations
     getTranslations() {
         return {
@@ -39,7 +40,8 @@ Module.register("{{cookiecutter.module_slug}}", {
     // Define data that is sent to template
     getTemplateData() {
         return {
-            config: this.config
+            config: this.config,
+            items: this.items
         };
     },
     // Runs on initialization
@@ -63,13 +65,19 @@ Module.register("{{cookiecutter.module_slug}}", {
     socketNotificationReceived: function (notification, payload) {
         switch (notification) {
             case "{{cookiecutter.module_slug}}-RECEIVE-DATA": {
-                this.renderData(payload);
+                this.renderUI(payload);
             } break;
             default: { };
         }
     },
     // Render response data
-    renderData: function (data) {
-        //
+    renderUI: function (data) {
+        if (!data) {
+            console.error(this.translate('Error'))
+            return;
+        }
+        this.items = data;
+        // Update dom once items are set
+        this.updateDom(500);
     }
 });

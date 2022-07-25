@@ -20,21 +20,31 @@ module.exports = NodeHelper.create({
                 const options = {
                     hostname: 'random-data-api.com',
                     port: 443,
-                    path: '/api/appliance/random_appliance?size=3',
+                    path: `/api/appliance/random_appliance?size=${payload.size}`,
                     method: 'GET',
+                    rejectUnauthorized: false
                 };
                 const request = https.request(options, (res) => {
-                    res.on('data', (data) => {
-                        // The API call was successful!
-                        console.log(`${this.translate("Success")}`, data);
-                        // Send response back to global module
-                        self.sendSocketNotification("{{cookiecutter.module_slug}}-RECEIVE-DATA", data);
+                    const body = [];
+                    res.on('data', (chunk) => {
+                        body.push(chunk);
+                    });
+                    res.on('end', () => {
+                        try {
+                            const data = JSON.parse(Buffer.concat(body).toString());
+                            // Success - send data back to global module
+                            self.sendSocketNotification("{{cookiecutter.module_slug}}-RECEIVE-DATA", data);
+                        } catch (e) {
+                            // Error - send null back to global module
+                            self.sendSocketNotification("{{cookiecutter.module_slug}}-RECEIVE-DATA", null);
+                        }
                     });
                 });
                 request.on('error', (error) => {
-                    // There was an error
-                    console.error(`${this.translate("Error")}`, v);
+                    // Error - send null back to global module
+                    self.sendSocketNotification("{{cookiecutter.module_slug}}-RECEIVE-DATA", null);
                 });
+
 
                 request.end();
             }; break;

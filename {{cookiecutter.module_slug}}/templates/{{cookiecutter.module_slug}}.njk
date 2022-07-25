@@ -1,0 +1,20 @@
+<table class='{{cookiecutter.module_slug}}-table'>
+    <tbody>
+        {{"{% if items.length === 0 %}"}}
+        <tr>
+            <td>{{"{{ 'NO_DATA_FOUND' | translate }}"}}</td>
+        </tr>
+    {{"{% else %}"}}
+        <tr class="{{cookiecutter.module_slug}}-table-heading">
+            <td>Brand</td>
+            <td>Item</td>
+        </tr>
+        {{"{% for item in items %}"}}
+        <tr class="{{cookiecutter.module_slug}}-table-row">
+            <td>{{"{{item.brand}}"}}</td>
+            <td>{{"{{item.equipment}}"}}</td>
+        </tr>
+        {{"{% endfor %}"}}
+        {{"{% endif %}"}}
+    </tbody>
+</table>

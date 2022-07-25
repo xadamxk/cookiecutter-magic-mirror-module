@@ -7,3 +7,17 @@
  *
  * Styles:
  */
+
+ .{{cookiecutter.module_slug}}-table {
+    color: white;
+ }
+
+ .{{cookiecutter.module_slug}}-table-heading {
+   height: 36px;
+   font-size: 36px;
+}
+
+.{{cookiecutter.module_slug}}-table-row {
+   height: 24px;
+   font-size: 24px
+}

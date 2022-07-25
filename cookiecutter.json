@@ -1,8 +1,14 @@
 {
     "module_name": "MMM Sample Module",
-    "module_slug": "{{ cookiecutter.module_name.upper().replace(' ',  '_').replace('_', '-') }}",
-    "module_license": ["mit", "apache-2.0", "gpl-3.0", "bsd-3-clause", "unlicense"],
+    "module_slug": "{{cookiecutter.module_name.upper().replace(' ', '-').replace('_', '-')}}",
     "module_description": "A sample MagicMirror module.",
-    "author_name": "First Last",
-    "author_email": "first.last@gmail.com"
+    "module_license": [
+        "MIT",
+        "Apache Software License 2.0",
+        "GNU GPL v3.0",
+        "BSD-3",
+        "Unlicensed"
+    ],
+    "author_name": "John Doe",
+    "author_email": "john.doe@gmail.com"
 }
