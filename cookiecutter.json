@@ -5,8 +5,8 @@
     "module_license": [
         "MIT",
         "Apache Software License 2.0",
-        "GNU GPL v3.0",
-        "BSD-3",
+        "GPLv3",
+        "BSD",
         "Unlicensed"
     ],
     "author_name": "John Doe",
